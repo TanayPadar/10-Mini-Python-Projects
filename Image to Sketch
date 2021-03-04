@@ -2,20 +2,33 @@
 #Channel Link :- https://tinyurl.com/1smu75d8
 #Channel Name :- Junior Programmer 
 
+#Install Module
+import cv2 
 
-#Import Module
-import qrcode 
+#Get the img location /Name from PC
+img_location = "C:\\Users\\Manisha\\.vscode\\Basic\\Mini - Projects\\img to sketch\\image.jpg"
 
-#Create QR box
-qr = qrcode.QRCode(
-    version=1,
-    box_size=10,
-    border=5
-    )
+#Read the img
+img = cv2.imread(img_location)
 
-#Main Loop
-data ="https://tinyurl.com/1smu75d8"
-qr.add_data(data)
-qr.make(fit=True)
-img=qr.make_image(file="black",back_color="white")
-img.save("Trial.png")
+#Convert the image
+gray_image = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+
+#Invert the image 
+inverted_gray_image = 255 -gray_image
+
+#Blur the image 
+blurred_img = cv2.GaussianBlur(inverted_gray_image,(21,21), 0)
+
+#Invert the blur image
+inverted_blurred_img = 255 -blurred_img
+
+#Create the pencil image 
+pencil_sketch_IMG = cv2.divide(gray_image,inverted_gray_image,scale =256.0)
+
+#Show the image 
+cv2.imshow('Original Image', img)
+cv2.imshow('New Image',pencil_sketch_IMG)
+cv2.waitKey(0)
+
+
