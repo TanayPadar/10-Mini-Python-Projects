@@ -1,0 +1,17 @@
+#Created by :- Junior Programmer / Tanay 
+#Channel Link :- https://tinyurl.com/1smu75d8
+#Channel Name :- Junior Programmer 
+
+#Import Module
+from  gtts import gTTS
+import os 
+
+#Text File Location
+fh = open("C:\\Users\Manisha\\.vscode\\Basic\\Mini - Projects\\Text to Speech\\test.txt","r")
+myText = fh.read().replace("\n"," ")
+
+language ='en'
+output = gTTS(text=myText, lang=language, slow=False)
+
+#Output File Location 
+output.save("C:\\Users\Manisha\\.vscode\\Basic\\Mini - Projects\\Text to Speech")
