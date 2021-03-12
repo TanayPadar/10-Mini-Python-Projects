@@ -1,0 +1,12 @@
+
+#Project by :- Junior Programmer / Tanay 
+#Channel Link :- https://tinyurl.com/1smu75d8
+#Channel Name :- Junior Programmer 
+
+#Import Module
+import pyautogui
+
+im1 = pyautogui.screenshot()
+
+#Location of ScreenShort
+im1.save("C:\\Users\Manisha\\.vscode\\Basic\\Mini - Projects\\Take ScreenShort")
