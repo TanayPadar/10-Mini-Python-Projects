@@ -1,0 +1,29 @@
+#Project by :- Junior Programmer / Tanay 
+#Channel Link :- https://tinyurl.com/1smu75d8
+#Channel Name :- Junior Programmer 
+
+
+#Install Modules
+from tkinter import*
+import wikipedia
+
+def on_click():
+    q=get_q.get()
+    text.insert(INSERT, wikipedia.summary(q))
+
+root=Tk()
+root.title("Wikipedia")
+question=Label(root,text="Question")
+question.pack()
+
+get_q=Entry(root,bd=5)
+get_q.pack()
+
+submit=Button(root,text="serach", command=on_click)
+submit.pack()
+text=Text(root)
+
+text.pack()
+root.mainloop()
+
+
