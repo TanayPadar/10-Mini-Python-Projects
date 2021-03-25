@@ -2,34 +2,17 @@
 #Channel Link :- https://tinyurl.com/1smu75d8
 #Channel Name :- Junior Programmer 
 
-#Install Modules 
-from tkinter import*
-import tkinter.ttk as ttk 
-from ttkthemes import ThemedTk
-from tkinter import messagebox
-import pyshortners 
-import webbrowser
+#Import Module
+from spellchecker import SpellChecker
+spell = SpellChecker()
 
-#Defining 
-def logic():
-    s=pyshortners.Shortner()
-    a=s.tinyurl.short("www.google.com")
-    messagebox.showinfo("This is your URL !!",a)
+#Main Loop
+while True:
+    word=input("Enter the Word?")
+    word=word.lower()
+    if word in spell:
+        print ("'{}'is spelled correctly!".format(word))
+    else:
+        correctwords=spell.correction(word)
+        print("The best suggestion for '{}' is '{}'".format(word,correctwords))
 
-def callback():
-    url ="www.google.com"
-    webbrowser.open_new(url)
-
-#Creating Tkinter Box
-top=ThemedTk(theme="scidgrey")
-top.title("JP URL Shortner")
-top.geometry("500*500")
-filename= PhotoImage(file="C:\\Users\\Manisha\\.vscode\\Basic\\Mini - Projects\\URL Shortner\\image.png")
-bg_label=Label(top,image=filename)
-bg_label.place(x=0,y=0,relwidth=1,relheight=1)
-
-#Creating Button
-b1=ttk.Button(top,text="Click to open the link" ,command=callback).pack()
-b2=ttk.Button(top,text="Click to Shorten the URl",command=logic).pack()
-
-top.mainloop()
